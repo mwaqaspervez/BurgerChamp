@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">BurgerChamp</string>
     <string name="action_settings">Settings</string>
+    <string-array name="cities_list">
+
+
+        
+    </string-array>
 </resources>
+
+
