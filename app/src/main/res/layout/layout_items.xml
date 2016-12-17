@@ -30,8 +30,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:id="@+id/item_starters">
+                android:orientation="vertical">
 
 
                 <TextView
@@ -41,6 +40,7 @@
                     android:drawableRight="@drawable/ic_right_arrow"
                     android:padding="12dp"
                     android:text="Starters"
+                    android:id="@+id/tv_starters"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
 
@@ -57,7 +57,25 @@
                     android:drawableEnd="@drawable/ic_right_arrow"
                     android:drawableRight="@drawable/ic_right_arrow"
                     android:padding="12dp"
-                    android:text="Mains"
+                    android:id="@+id/tv_chicken"
+                    android:text="Chicken Burgers"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:background="@color/LightGrey" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@drawable/ic_right_arrow"
+                    android:drawableRight="@drawable/ic_right_arrow"
+                    android:padding="12dp"
+                    android:id="@+id/tv_beef"
+                    android:text="Beef Burgers"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
 
@@ -75,6 +93,7 @@
                     android:drawableRight="@drawable/ic_right_arrow"
                     android:padding="12dp"
                     android:text="Desserts"
+                    android:id="@+id/tv_dessert"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
 
@@ -92,6 +111,7 @@
                     android:drawableRight="@drawable/ic_right_arrow"
                     android:padding="12dp"
                     android:text="Beverages"
+                    android:id="@+id/tv_beverage"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
 
@@ -109,6 +129,7 @@
                     android:drawableRight="@drawable/ic_right_arrow"
                     android:padding="12dp"
                     android:text="Icecream"
+                    android:id="@+id/tv_icecream"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
 

@@ -7,12 +7,22 @@ public class Item {
     private int price;
     private String name;
     private boolean isSpecial;
+    private String detail;
 
 
-    public Item(int price, String name, boolean isSpecial) {
+    public Item(int price, String name, boolean isSpecial, String detail) {
         this.price = price;
         this.name = name;
+        this.detail = detail;
         this.isSpecial = isSpecial;
+    }
+
+    public String getDetail() {
+        return detail;
+    }
+
+    public void setDetail(String detail) {
+        this.detail = detail;
     }
 
     public int getPrice() {

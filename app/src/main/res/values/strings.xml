@@ -52,28 +52,44 @@
     </string-array>
 
 
+    <string-array name="chickenBurgers">
+        <item>350-Chicken Champ-0</item>
+        <item>450-Mega Chicken Champ-1</item>
+        <item>450-Flamy Chicken Champ-0</item>
+        <item>380-Chrunchy Chicken-0</item>
+        <item>480-Mega Chrunchy Chicken-0</item>
+        <item>550-BurgerChamp Chicken Special-0</item>
+    </string-array>
+    <string-array name="beefBurgers">
+        <item>400-BBQ Mushroom-0</item>
+        <item>450-Mega BBQ Muhsroom-1</item>
+        <item>450-Flamy Beef Champ-0</item>
+        <item>500-Smokin Hot-0</item>
+        <item>580-Mega Smokin Hot-0</item>
+        <item>550-BurgerChamp Beef Special-0</item>
+    </string-array>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <string-array name="desserts">
+        <item>1300-Strawberry Cheese Cake-1</item>
+        <item>300-Plain Butter Cake-0</item>
+        <item>240-White Chocohlate-0</item>
+    </string-array>
+    <string-array name="beverages">
+        <item>70-Mineral Water-0</item>
+        <item>200-Mint Lemonade-1</item>
+        <item>150-Milk Shake-0</item>
+        <item>250-Fresh Juice-0</item>
+        <item>60-Tea-0</item>
+        <item>80-Green Tea-0</item>
+        <item>190-Coffee-0</item>
+        <item>50-Cold drink-0</item>
+    </string-array>
+    <string-array name="icecream">
+        <item>300-Belgian Chocolate Chip-1</item>
+        <item>250-French Vanilla-0</item>
+        <item>250-Crunchy Caramel-0</item>
+        <item>220-Coffee Classic-0</item>
+    </string-array>
 
 </resources>
 

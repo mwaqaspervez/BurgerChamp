@@ -1,5 +1,6 @@
 package com.mwaqaspervez.burgerchamp;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,12 +45,12 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
         return items.size();
     }
 
-     void add(Item item) {
+    void add(Item item) {
         items.add(item);
         notifyDataSetChanged();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private TextView name, price, isSpecial;
 
@@ -59,7 +60,20 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
             name = (TextView) itemView.findViewById(R.id.item_name);
             price = (TextView) itemView.findViewById(R.id.item_price);
             isSpecial = (TextView) itemView.findViewById(R.id.item_special);
+            name.setOnClickListener(this);
+            price.setOnClickListener(this);
+            isSpecial.setOnClickListener(this);
+        }
 
+
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(view.getContext(), ItemStore.class);
+            intent.putExtra("name", items.get(getAdapterPosition()).getName());
+            intent.putExtra("price", items.get(getAdapterPosition()).getPrice());
+            intent.putExtra("isSpecial", items.get(getAdapterPosition()).isSpecial());
+            intent.putExtra("detail", items.get(getAdapterPosition()).getDetail());
+            view.getContext().startActivity(intent);
         }
     }
 

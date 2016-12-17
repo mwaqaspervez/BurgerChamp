@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 public class ItemsActivity extends Fragment implements View.OnClickListener {
 
@@ -27,9 +26,12 @@ public class ItemsActivity extends Fragment implements View.OnClickListener {
 
         View v = inflater.inflate(R.layout.layout_items, container, false);
 
-        LinearLayout layout = (LinearLayout) v.findViewById(R.id.item_starters);
-
-        layout.setOnClickListener(this);
+        v.findViewById(R.id.tv_starters).setOnClickListener(this);
+        v.findViewById(R.id.tv_chicken).setOnClickListener(this);
+        v.findViewById(R.id.tv_beef).setOnClickListener(this);
+        v.findViewById(R.id.tv_beverage).setOnClickListener(this);
+        v.findViewById(R.id.tv_dessert).setOnClickListener(this);
+        v.findViewById(R.id.tv_icecream).setOnClickListener(this);
 
         return v;
     }
@@ -37,7 +39,28 @@ public class ItemsActivity extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View view) {
 
+        Intent intent = new Intent(view.getContext(), ItemsDetails.class);
+        switch (view.getId()) {
 
-        startActivity(new Intent(view.getContext(), ItemsDetails.class));
+            case R.id.tv_starters:
+                intent.putExtra("selected", "starters");
+                break;
+            case R.id.tv_chicken:
+                intent.putExtra("selected", "chicken");
+                break;
+            case R.id.tv_beef:
+                intent.putExtra("selected", "beef");
+                break;
+            case R.id.tv_beverage:
+                intent.putExtra("selected", "beverage");
+                break;
+            case R.id.tv_icecream:
+                intent.putExtra("selected", "icecream");
+                break;
+            case R.id.tv_dessert:
+                intent.putExtra("selected", "dessert");
+                break;
+        }
+        startActivity(intent);
     }
 }

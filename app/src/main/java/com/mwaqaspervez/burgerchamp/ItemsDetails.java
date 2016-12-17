@@ -34,7 +34,7 @@ public class ItemsDetails extends AppCompatActivity {
         recyclerView.setLayoutManager(manager);
 
         adapter = new ItemsAdapter();
-        addData();
+        addData(getIntent().getStringExtra("selected"));
 
         recyclerView.setAdapter(adapter);
 
@@ -46,22 +46,61 @@ public class ItemsDetails extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void addData() {
+    public void addData(String selected) {
 
-        String[] items = getResources().getStringArray(R.array.starters);
+        String[] array;
+        String title = "Menu";
+        switch (selected) {
+
+            case "starters":
+                array = getResources().getStringArray(R.array.starters);
+                title = "Starters";
+                break;
+
+            case "chicken":
+                title = "Chicken Burgers";
+                array = getResources().getStringArray(R.array.chickenBurgers);
+                break;
+            case "beef":
+                title = "Beef Burgers";
+                array = getResources().getStringArray(R.array.beefBurgers);
+                break;
+            case "dessert":
+                title = "Dessert";
+                array = getResources().getStringArray(R.array.desserts);
+                break;
+            case "beverage":
+                title = "Beverage";
+                array = getResources().getStringArray(R.array.beverages);
+                break;
+            case "icecream":
+                title = "Ice-Creams";
+                array = getResources().getStringArray(R.array.icecream);
+                break;
+
+            default:
+                array = getResources().getStringArray(R.array.chickenBurgers);
+
+        }
+
+        if (getSupportActionBar() != null)
+            getSupportActionBar().setTitle(title);
+
+
         List<Integer> price = new ArrayList<>();
         List<String> name = new ArrayList<>();
         List<Boolean> isSpecial = new ArrayList<>();
-
-        for (String item : items) {
+        List<String> detail = new ArrayList<>();
+        for (String item : array) {
             String[] x = item.split("-");
             price.add(Integer.valueOf(x[0]));
             name.add(x[1]);
             isSpecial.add(!x[2].equals("0"));
+            detail.add(x[3]);
         }
 
         for (int j = 0; j < price.size(); j++)
-            adapter.add(new Item(price.get(j), name.get(j), isSpecial.get(j)));
+            adapter.add(new Item(price.get(j), name.get(j), isSpecial.get(j), detail.get(j)));
 
     }
 }
