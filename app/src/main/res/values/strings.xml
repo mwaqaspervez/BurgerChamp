@@ -3,9 +3,78 @@
     <string name="action_settings">Settings</string>
     <string-array name="cities_list">
 
-
-        
+        <item>Karachi Airport</item>
+        <item>Baldia Town</item>
+        <item>Board of Secondary Education</item>
+        <item>Karachi Cantt</item>
+        <item>City GPO</item>
+        <item>Clifton</item>
+        <item>COD</item>
+        <item>Darul-uloom</item>
+        <item>Defence Society</item>
+        <item>Federal B Area</item>
+        <item>Gulshan-e-Iqbal</item>
+        <item>Habib Bank</item>
+        <item>Hotel Metropole</item>
+        <item>Jinnah Post Graduate Medical Center</item>
+        <item>Karachi GPO</item>
+        <item>Karachi University</item>
+        <item>Liaqatabad</item>
+        <item>Malir Cantt</item>
+        <item>Malir City</item>
+        <item>Mehmoodabad</item>
+        <item>Model Colony</item>
+        <item>National Cement Industry- DALMIA</item>
+        <item>Nazimabad GPO</item>
+        <item>New Karachi</item>
+        <item>New Town GPO</item>
+        <item>North Nazimabad GPO</item>
+        <item>PCSIR</item>
+        <item>PECHS</item>
+        <item>Rafa-e-Aam Society</item>
+        <item>SITE</item>
+        <item>Saddar GPO</item>
+        <item>Shah Faisal Colony</item>
+        <item>Shahra-e-Faisal</item>
+        <item>Sher Shah Colony</item>
+        <item>Sindh Governor House</item>
+        <item>Nishter Road</item>
     </string-array>
+
+    <string-array name="starters">
+        <item>425-Caesar Salad-0</item>
+        <item>440-Chicken Strips-0</item>
+        <item>420-Mozzarella Strips-1</item>
+        <item>175-Nuggets-0</item>
+        <item>280-Wings-0</item>
+        <item>90-Onion Rings-0</item>
+        <item>150-Fries-0</item>
+    </string-array>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </resources>
 
 

@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 
 public class DealsActivity extends Fragment {
 
-    public static DealsActivity instance = null;
+    private DealsActivity instance = null;
 
     public DealsActivity newInstance() {
 
