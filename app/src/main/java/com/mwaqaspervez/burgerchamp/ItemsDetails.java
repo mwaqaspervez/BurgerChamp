@@ -14,7 +14,6 @@ public class ItemsDetails extends AppCompatActivity {
 
 
     private RecyclerView recyclerView;
-    private List<Item> items;
     private ItemsAdapter adapter;
 
     @Override
@@ -86,6 +85,7 @@ public class ItemsDetails extends AppCompatActivity {
         if (getSupportActionBar() != null)
             getSupportActionBar().setTitle(title);
 
+        adapter.setTitle(title);
 
         List<Integer> price = new ArrayList<>();
         List<String> name = new ArrayList<>();

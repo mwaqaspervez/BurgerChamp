@@ -22,6 +22,8 @@
         <activity
             android:name=".ItemsDetails"
             android:label="Menu" />
+        <activity
+            android:name=".ItemStore" />
     </application>
 
 </manifest>

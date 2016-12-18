@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">BurgerChamp</string>
     <string name="action_settings">Settings</string>
+    <string name="string_reduce_quantity">string/reduce_quantity</string>
+    <string name="string_increasequantity">string/increaseQuantity</string>
     <string-array name="cities_list">
 
         <item>Karachi Airport</item>
@@ -42,53 +44,53 @@
     </string-array>
 
     <string-array name="starters">
-        <item>425-Caesar Salad-0</item>
-        <item>440-Chicken Strips-0</item>
-        <item>420-Mozzarella Strips-1</item>
-        <item>175-Nuggets-0</item>
-        <item>280-Wings-0</item>
-        <item>90-Onion Rings-0</item>
-        <item>150-Fries-0</item>
+        <item>425-Caesar Salad-0-asd</item>
+        <item>440-Chicken Strips-0-asd</item>
+        <item>420-Mozzarella Strips-1-asd</item>
+        <item>175-Nuggets-0-asd</item>
+        <item>280-Wings-0-asd</item>
+        <item>90-Onion Rings-0-asd</item>
+        <item>150-Fries-0-asd</item>
     </string-array>
 
 
     <string-array name="chickenBurgers">
-        <item>350-Chicken Champ-0</item>
-        <item>450-Mega Chicken Champ-1</item>
-        <item>450-Flamy Chicken Champ-0</item>
-        <item>380-Chrunchy Chicken-0</item>
-        <item>480-Mega Chrunchy Chicken-0</item>
-        <item>550-BurgerChamp Chicken Special-0</item>
+        <item>350-Chicken Champ-0-asd</item>
+        <item>450-Mega Chicken Champ-1-asdads</item>
+        <item>450-Flamy Chicken Champ-0-zxc</item>
+        <item>380-Chrunchy Chicken-0-zxc</item>
+        <item>480-Mega Chrunchy Chicken-0-zxczxczx</item>
+        <item>550-BurgerChamp Chicken Special-0-zxxxss</item>
     </string-array>
     <string-array name="beefBurgers">
-        <item>400-BBQ Mushroom-0</item>
-        <item>450-Mega BBQ Muhsroom-1</item>
-        <item>450-Flamy Beef Champ-0</item>
-        <item>500-Smokin Hot-0</item>
-        <item>580-Mega Smokin Hot-0</item>
-        <item>550-BurgerChamp Beef Special-0</item>
+        <item>400-BBQ Mushroom-0-zxcxzcxzc</item>
+        <item>450-Mega BBQ Muhsroom-1-zxczxc</item>
+        <item>450-Flamy Beef Champ-0-qweqwe</item>
+        <item>500-Smokin Hot-0-qweqwe</item>
+        <item>580-Mega Smokin Hot-0-qweqwe</item>
+        <item>550-BurgerChamp Beef Special-0-qweqwezzz</item>
     </string-array>
 
     <string-array name="desserts">
-        <item>1300-Strawberry Cheese Cake-1</item>
-        <item>300-Plain Butter Cake-0</item>
-        <item>240-White Chocohlate-0</item>
+        <item>1300-Strawberry Cheese Cake-1-asdasdasdzz</item>
+        <item>300-Plain Butter Cake-0-zxczxczxc</item>
+        <item>240-White Chocohlate-0-zxcxzczxc</item>
     </string-array>
     <string-array name="beverages">
-        <item>70-Mineral Water-0</item>
-        <item>200-Mint Lemonade-1</item>
-        <item>150-Milk Shake-0</item>
-        <item>250-Fresh Juice-0</item>
-        <item>60-Tea-0</item>
-        <item>80-Green Tea-0</item>
-        <item>190-Coffee-0</item>
-        <item>50-Cold drink-0</item>
+        <item>70-Mineral Water-0-xczzxcz</item>
+        <item>200-Mint Lemonade-1-zzzzzxss</item>
+        <item>150-Milk Shake-0-asdasdasd</item>
+        <item>250-Fresh Juice-0-qweqweqwe</item>
+        <item>60-Tea-0-qweqweqwe</item>
+        <item>80-Green Tea-0-qweqweqwe</item>
+        <item>190-Coffee-0-qweqzzzz</item>
+        <item>50-Cold drink-0-zxczxczxc</item>
     </string-array>
     <string-array name="icecream">
-        <item>300-Belgian Chocolate Chip-1</item>
-        <item>250-French Vanilla-0</item>
-        <item>250-Crunchy Caramel-0</item>
-        <item>220-Coffee Classic-0</item>
+        <item>300-Belgian Chocolate Chip-1-zxczxc</item>
+        <item>250-French Vanilla-0-zxczxczxc</item>
+        <item>250-Crunchy Caramel-0-z1zz313</item>
+        <item>220-Coffee Classic-0-zxczxczxc</item>
     </string-array>
 
 </resources>

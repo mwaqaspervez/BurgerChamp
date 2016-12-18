@@ -2,6 +2,7 @@ package com.mwaqaspervez.burgerchamp;
 
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,11 +12,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> {
+class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> {
 
     private List<Item> items;
+    private String title;
 
-    public ItemsAdapter() {
+    ItemsAdapter() {
         this.items = new ArrayList<>();
     }
 
@@ -50,6 +52,10 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
         notifyDataSetChanged();
     }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private TextView name, price, isSpecial;
@@ -73,6 +79,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
             intent.putExtra("price", items.get(getAdapterPosition()).getPrice());
             intent.putExtra("isSpecial", items.get(getAdapterPosition()).isSpecial());
             intent.putExtra("detail", items.get(getAdapterPosition()).getDetail());
+            intent.putExtra("title", title);
             view.getContext().startActivity(intent);
         }
     }
