@@ -22,8 +22,13 @@
         <activity
             android:name=".ItemsDetails"
             android:label="Menu" />
+        <activity android:name=".ItemStore" />
+        <activity android:name=".Checkout"
+            android:label="Checkout"/>
         <activity
-            android:name=".ItemStore" />
+            android:name=".SendOrderForm"
+            android:label="Order"
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

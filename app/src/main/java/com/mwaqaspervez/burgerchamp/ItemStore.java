@@ -1,9 +1,9 @@
 package com.mwaqaspervez.burgerchamp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -47,6 +47,7 @@ public class ItemStore extends AppCompatActivity implements View.OnClickListener
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         this.finish();
+        overridePendingTransition(R.anim.left_to_right, R.anim.right_to_left);
         return super.onOptionsItemSelected(item);
     }
 
@@ -72,7 +73,17 @@ public class ItemStore extends AppCompatActivity implements View.OnClickListener
 
             case R.id.store_add_to_cart:
 
+                startActivity(new Intent(this, Checkout.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_in_left);
+                //Snackbar.make(view, "Added To Cart", Snackbar.LENGTH_LONG).show();
                 break;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.left_to_right, R.anim.right_to_left);
+
     }
 }

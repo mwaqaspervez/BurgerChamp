@@ -45,6 +45,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intent.putExtra("selected", "dessert");
                 break;
         }
+
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_in_left);
+
     }
 }

@@ -40,8 +40,15 @@ public class ItemsDetails extends AppCompatActivity {
     }
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.left_to_right, R.anim.right_to_left);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         this.finish();
+        overridePendingTransition(R.anim.left_to_right, R.anim.right_to_left);
         return super.onOptionsItemSelected(item);
     }
 

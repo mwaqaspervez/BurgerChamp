@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -19,7 +20,11 @@ public class SendOrderForm extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.send_order_layout);
-        checkIfDataExist();
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setHomeButtonEnabled(true);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
 
         rememberMe = (CheckBox) findViewById(R.id.remember_me);
@@ -28,7 +33,7 @@ public class SendOrderForm extends AppCompatActivity {
         address = (EditText) findViewById(R.id.ed_address);
         city = (EditText) findViewById(R.id.ed_city);
 
-
+        checkIfDataExist();
         rememberMe.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -60,5 +65,18 @@ public class SendOrderForm extends AppCompatActivity {
             city.setText(preferences.getString("city", ""));
             rememberMe.setChecked(true);
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        this.finish();
+        overridePendingTransition(R.anim.left_to_right, R.anim.right_to_left);
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.left_to_right, R.anim.right_to_left);
     }
 }
