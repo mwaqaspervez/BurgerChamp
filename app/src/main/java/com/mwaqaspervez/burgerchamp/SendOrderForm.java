@@ -14,7 +14,7 @@ public class SendOrderForm extends AppCompatActivity {
 
 
     private CheckBox rememberMe;
-    private EditText name, phone, address, city;
+    private EditText name, phone, address;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,7 +31,7 @@ public class SendOrderForm extends AppCompatActivity {
         name = (EditText) findViewById(R.id.ed_name);
         phone = (EditText) findViewById(R.id.ed_phone);
         address = (EditText) findViewById(R.id.ed_address);
-        city = (EditText) findViewById(R.id.ed_city);
+
 
         checkIfDataExist();
         rememberMe.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -40,14 +40,11 @@ public class SendOrderForm extends AppCompatActivity {
                 SharedPreferences preferences = getSharedPreferences("rememberMe", MODE_PRIVATE);
                 SharedPreferences.Editor editor = preferences.edit();
                 if (b) {
-
                     editor.putString("name", name.getText().toString());
                     editor.putString("phone", phone.getText().toString());
                     editor.putString("address", address.getText().toString());
-                    editor.putString("city", city.getText().toString());
                 } else
                     editor.clear();
-
 
                 editor.apply();
 
@@ -62,7 +59,6 @@ public class SendOrderForm extends AppCompatActivity {
             name.setText(preferences.getString("name", ""));
             phone.setText(preferences.getString("phone", ""));
             address.setText(preferences.getString("address", ""));
-            city.setText(preferences.getString("city", ""));
             rememberMe.setChecked(true);
         }
     }

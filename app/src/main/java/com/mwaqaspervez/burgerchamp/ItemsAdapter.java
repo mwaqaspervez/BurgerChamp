@@ -36,7 +36,7 @@ class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> {
         else
             holder.isSpecial.setVisibility(View.GONE);
 
-        holder.price.setText("Price - " + items.get(position).getPrice() + "rs");
+        holder.price.setText("Rs. " + items.get(position).getPrice() + "");
         holder.name.setText(items.get(position).getName());
 
     }

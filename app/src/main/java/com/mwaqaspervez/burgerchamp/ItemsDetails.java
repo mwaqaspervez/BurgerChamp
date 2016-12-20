@@ -1,11 +1,14 @@
 package com.mwaqaspervez.burgerchamp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,18 +18,29 @@ public class ItemsDetails extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private ItemsAdapter adapter;
+    private FloatingActionButton fb;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_detail);
 
+        fb = (FloatingActionButton) findViewById(R.id.detail_fab);
+        fb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ItemsDetails.this, Checkout.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_in_left);
+            }
+        });
+
+        if (getSharedPreferences("basket", MODE_PRIVATE).getString("item", null) == null)
+            fb.setVisibility(View.GONE);
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setHomeButtonEnabled(true);
         }
-
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         LinearLayoutManager manager = new LinearLayoutManager(this);
@@ -108,6 +122,16 @@ public class ItemsDetails extends AppCompatActivity {
 
         for (int j = 0; j < price.size(); j++)
             adapter.add(new Item(price.get(j), name.get(j), isSpecial.get(j), detail.get(j)));
+    }
 
+    @Override
+    protected void onResume() {
+
+        if (getSharedPreferences("basket", MODE_PRIVATE).getString("item", null) == null) {
+            if (fb != null)
+                fb.setVisibility(View.GONE);
+
+        }
+        super.onResume();
     }
 }

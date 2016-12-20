@@ -3,10 +3,16 @@ package com.mwaqaspervez.burgerchamp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.Locale;
 
@@ -14,12 +20,17 @@ public class ItemStore extends AppCompatActivity implements View.OnClickListener
 
 
     TextView quantity, totalPrice;
+    FloatingActionButton fb;
     private int quant = 1;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_store);
+        fb = (FloatingActionButton) findViewById(R.id.store_fab);
+        fb.setOnClickListener(this);
+        if (getSharedPreferences("basket", MODE_PRIVATE).getString("item", null) == null)
+            fb.setVisibility(View.GONE);
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -72,11 +83,41 @@ public class ItemStore extends AppCompatActivity implements View.OnClickListener
                 break;
 
             case R.id.store_add_to_cart:
+                saveTransactionToCart();
+                Snackbar.make(view, "Added To Basket", Snackbar.LENGTH_LONG)
+                        .show();
+                fb.setVisibility(View.VISIBLE);
+                break;
 
+            case R.id.store_fab:
                 startActivity(new Intent(this, Checkout.class));
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_in_left);
-                //Snackbar.make(view, "Added To Cart", Snackbar.LENGTH_LONG).show();
                 break;
+        }
+    }
+
+    private void saveTransactionToCart() {
+        try {
+            JSONArray jsonArray;
+
+            if (getSharedPreferences("basket", MODE_PRIVATE).getString("item", null) == null)
+                jsonArray = new JSONArray();
+            else
+                jsonArray = new JSONArray(getSharedPreferences("basket", MODE_PRIVATE).getString("item", null));
+
+            jsonArray.put(new JSONObject()
+                    .put("name", getIntent().getStringExtra("name"))
+                    .put("detail", getIntent().getStringExtra("detail"))
+                    .put("price", getIntent().getIntExtra("price", 0))
+                    .put("quantity", quant));
+
+            getSharedPreferences("basket", MODE_PRIVATE)
+                    .edit()
+                    .putString("item", jsonArray.toString())
+                    .apply();
+
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
     }
 
@@ -84,6 +125,5 @@ public class ItemStore extends AppCompatActivity implements View.OnClickListener
     public void onBackPressed() {
         super.onBackPressed();
         overridePendingTransition(R.anim.left_to_right, R.anim.right_to_left);
-
     }
 }

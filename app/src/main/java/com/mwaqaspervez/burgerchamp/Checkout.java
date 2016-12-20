@@ -1,19 +1,25 @@
 package com.mwaqaspervez.burgerchamp;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +40,13 @@ public class Checkout extends AppCompatActivity {
         }
 
         total = (TextView) findViewById(R.id.checkout_total);
+        findViewById(R.id.order_now).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Checkout.this, SendOrderForm.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_in_left);
+            }
+        });
 
 
         adapter = new CheckOutAdapter();
@@ -48,20 +61,49 @@ public class Checkout extends AppCompatActivity {
 
     private void addData() {
 
-        adapter.add(new SingleCheckOutItem("HollyWood", 2, 600));
-        adapter.add(new SingleCheckOutItem("BollyWood", 4, 400));
-        adapter.add(new SingleCheckOutItem("Chicken Boost", 1, 450));
-        adapter.add(new SingleCheckOutItem("Five Star", 1, 410));
-        adapter.add(new SingleCheckOutItem("Triple Cheese", 3, 400));
-        adapter.add(new SingleCheckOutItem("Doppler", 4, 420));
-        adapter.add(new SingleCheckOutItem("Big Bang", 6, 300));
-        adapter.add(new SingleCheckOutItem("Trivia", 1, 600));
+
+        try {
+            JSONArray array = new JSONArray(getSharedPreferences("basket", MODE_PRIVATE).getString("item", null));
+
+            for (int i = 0; i < array.length(); i++) {
+                adapter.add(new SingleCheckOutItem(
+                        array.getJSONObject(i).getString("name"),
+                        array.getJSONObject(i).getInt("quantity"),
+                        array.getJSONObject(i).getInt("price")));
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.checkout_menu, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        this.finish();
-        overridePendingTransition(R.anim.left_to_right, R.anim.right_to_left);
+
+        if (item.getItemId() == android.R.id.home) {
+            this.finish();
+            overridePendingTransition(R.anim.left_to_right, R.anim.right_to_left);
+        } else {
+            getSharedPreferences("basket", MODE_PRIVATE)
+                    .edit()
+                    .clear()
+                    .apply();
+            adapter.clear();
+            findViewById(R.id.order_now).setEnabled(false);
+            findViewById(R.id.order_now).setBackgroundColor(
+                    ContextCompat.getColor(this, R.color.gray));
+            total.setText("Rs. 00");
+
+            Snackbar.make(findViewById(R.id.item_listview), "Order Cleared", Snackbar.LENGTH_LONG)
+                    .show();
+
+        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -122,6 +164,11 @@ public class Checkout extends AppCompatActivity {
                 total += (item.getPrice() * item.getQuantity());
 
             return total;
+        }
+
+        void clear() {
+            list.clear();
+            notifyDataSetChanged();
         }
 
 

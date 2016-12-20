@@ -27,7 +27,7 @@
             android:label="Checkout"/>
         <activity
             android:name=".SendOrderForm"
-            android:label="Order"
+            android:label="Checkout"
             android:theme="@style/AppTheme" />
     </application>
 
