@@ -16,7 +16,6 @@ import java.util.List;
 public class ItemsDetails extends AppCompatActivity {
 
 
-    private RecyclerView recyclerView;
     private ItemsAdapter adapter;
     private FloatingActionButton fb;
 
@@ -42,7 +41,7 @@ public class ItemsDetails extends AppCompatActivity {
             getSupportActionBar().setHomeButtonEnabled(true);
         }
 
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         LinearLayoutManager manager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(manager);
 
@@ -130,7 +129,6 @@ public class ItemsDetails extends AppCompatActivity {
         if (getSharedPreferences("basket", MODE_PRIVATE).getString("item", null) == null) {
             if (fb != null)
                 fb.setVisibility(View.GONE);
-
         }
         super.onResume();
     }

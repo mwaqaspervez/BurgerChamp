@@ -17,7 +17,7 @@ class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> {
     private String title;
 
     ItemsAdapter() {
-        this.items = new ArrayList<>();
+        items = new ArrayList<>();
     }
 
 

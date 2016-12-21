@@ -43,7 +43,12 @@ public class ItemStore extends AppCompatActivity implements View.OnClickListener
     private void init() {
 
         ((TextView) findViewById(R.id.store_name)).setText(getIntent().getStringExtra("name"));
-        ((TextView) findViewById(R.id.store_detail)).setText(getIntent().getStringExtra("detail"));
+
+        if (getIntent().getStringExtra("detail").toLowerCase().equals("Undefined".toLowerCase()))
+            findViewById(R.id.layout_card).setVisibility(View.GONE);
+        else
+            ((TextView) findViewById(R.id.store_detail)).setText(getIntent().getStringExtra("detail"));
+
         ((TextView) findViewById(R.id.store_price)).setText("Rs. " + getIntent().getIntExtra("price", 0) + "");
         quantity = (TextView) findViewById(R.id.store_quantity);
         totalPrice = (TextView) findViewById(R.id.store_total_price);
