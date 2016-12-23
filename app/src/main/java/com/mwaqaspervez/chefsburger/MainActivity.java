@@ -9,6 +9,16 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    IabHelper.OnIabPurchaseFinishedListener mPurchaseFinishedListener
+            = new IabHelper.OnIabPurchaseFinishedListener() {
+        public void onIabPurchaseFinished(IabResult result, Purchase purchase) {
+            if (result.isFailure()) {
+                Log.d("InTabPurchaseFinished", "Error purchasing: " + result);
+            } else if (purchase.getSku().equals("burger_max")) {
+                Log.i("InTabPurchaseFinished", "Burger Bought");
+            }
+        }
+    };
     private FloatingActionButton fb;
 
     @Override
@@ -83,13 +93,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     void inAppPayment() {
 
-        IabHelper mHelper;
+        final IabHelper mHelper;
 
         // ...
-      //  String base64EncodedPublicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApna/po50Gf0zxqGpyaWFZizFPAwLd+oAapy+xfDGjHM+OTQghFK0f0/wl6cs2KV8g0PnXulIH1DqUoYCGBIT5uN/1/d/aC/SItkugXPLh3MnwcHPSFoR0vGR4MvDE6vNlaTT2r/Jp7b2zqNbeZfi5vAHuvaGAQwW25ztN5biu3UvJI/MOrPYnm2TVEgoACzvZV1AtTwmSqq1B2fyDbrDptnlGHwkaValZVEHNGEsFMthm4bcycreaDdXp3i0q1ycp9ZumYkaIZFKGQ3ITyjNtNkzAS7VQb+7DaDVXmKuFTibVsvwnOCaoKTvzjbNGrlwxX8/JblTnSP21vfL1sWwtQIDAQAB";
+        final String base64EncodedPublicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApna/po50Gf0zxqGpyaWFZizFPAwLd+oAapy+xfDGjHM+OTQghFK0f0/wl6cs2KV8g0PnXulIH1DqUoYCGBIT5uN/1/d/aC/SItkugXPLh3MnwcHPSFoR0vGR4MvDE6vNlaTT2r/Jp7b2zqNbeZfi5vAHuvaGAQwW25ztN5biu3UvJI/MOrPYnm2TVEgoACzvZV1AtTwmSqq1B2fyDbrDptnlGHwkaValZVEHNGEsFMthm4bcycreaDdXp3i0q1ycp9ZumYkaIZFKGQ3ITyjNtNkzAS7VQb+7DaDVXmKuFTibVsvwnOCaoKTvzjbNGrlwxX8/JblTnSP21vfL1sWwtQIDAQAB";
 
         // compute your public key and store it in base64EncodedPublicKey
-        mHelper = new IabHelper(this, "asd");
+        mHelper = new IabHelper(this, base64EncodedPublicKey);
 
         mHelper.startSetup(new IabHelper.OnIabSetupFinishedListener() {
             public void onIabSetupFinished(IabResult result) {
@@ -98,7 +108,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Log.i("InAppProblem", "Problem setting up In-app Billing: " + result);
                 }
                 Log.i("InAppSuccess", "Successfully connected" + result.getResponse());
-
+                try {
+                    mHelper.launchPurchaseFlow(MainActivity.this, "burger_max", 10001,
+                            mPurchaseFinishedListener, base64EncodedPublicKey);
+                } catch (IabHelper.IabAsyncInProgressException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
