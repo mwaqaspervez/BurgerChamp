@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -15,6 +16,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        inAppPayment();
         fb = (FloatingActionButton) findViewById(R.id.main_fab);
         fb.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,8 +73,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (getSharedPreferences("basket", MODE_PRIVATE).getString("item", null) == null) {
             if (fb != null)
                 fb.setVisibility(View.GONE);
+
+        } else {
+            if (fb != null)
+                fb.setVisibility(View.VISIBLE);
         }
         super.onResume();
     }
+
+    void inAppPayment() {
+
+        IabHelper mHelper;
+
+        // ...
+      //  String base64EncodedPublicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApna/po50Gf0zxqGpyaWFZizFPAwLd+oAapy+xfDGjHM+OTQghFK0f0/wl6cs2KV8g0PnXulIH1DqUoYCGBIT5uN/1/d/aC/SItkugXPLh3MnwcHPSFoR0vGR4MvDE6vNlaTT2r/Jp7b2zqNbeZfi5vAHuvaGAQwW25ztN5biu3UvJI/MOrPYnm2TVEgoACzvZV1AtTwmSqq1B2fyDbrDptnlGHwkaValZVEHNGEsFMthm4bcycreaDdXp3i0q1ycp9ZumYkaIZFKGQ3ITyjNtNkzAS7VQb+7DaDVXmKuFTibVsvwnOCaoKTvzjbNGrlwxX8/JblTnSP21vfL1sWwtQIDAQAB";
+
+        // compute your public key and store it in base64EncodedPublicKey
+        mHelper = new IabHelper(this, "asd");
+
+        mHelper.startSetup(new IabHelper.OnIabSetupFinishedListener() {
+            public void onIabSetupFinished(IabResult result) {
+                if (!result.isSuccess()) {
+                    // Oh no, there was a problem.
+                    Log.i("InAppProblem", "Problem setting up In-app Billing: " + result);
+                }
+                Log.i("InAppSuccess", "Successfully connected" + result.getResponse());
+
+            }
+        });
+
+
+    }
+
 
 }

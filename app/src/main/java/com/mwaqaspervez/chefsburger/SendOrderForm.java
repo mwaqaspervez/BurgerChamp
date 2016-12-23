@@ -50,6 +50,7 @@ public class SendOrderForm extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+
                 final ProgressDialog dialog = ProgressDialog.show(SendOrderForm.this, "", "Please Wait...",
                         true);
                 dialog.show();

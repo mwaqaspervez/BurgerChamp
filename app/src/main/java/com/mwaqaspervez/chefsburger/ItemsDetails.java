@@ -129,6 +129,10 @@ public class ItemsDetails extends AppCompatActivity {
         if (getSharedPreferences("basket", MODE_PRIVATE).getString("item", null) == null) {
             if (fb != null)
                 fb.setVisibility(View.GONE);
+
+        } else {
+            if (fb != null)
+                fb.setVisibility(View.VISIBLE);
         }
         super.onResume();
     }

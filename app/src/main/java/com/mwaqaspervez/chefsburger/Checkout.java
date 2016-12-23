@@ -9,6 +9,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -113,6 +114,7 @@ public class Checkout extends AppCompatActivity {
         super.onBackPressed();
         overridePendingTransition(R.anim.left_to_right, R.anim.right_to_left);
     }
+
 
     public class CheckOutAdapter extends RecyclerView.Adapter<CheckOutAdapter.ViewHolder> {
 
@@ -253,5 +255,7 @@ public class Checkout extends AppCompatActivity {
             }
         }
     }
+
+
 }
 

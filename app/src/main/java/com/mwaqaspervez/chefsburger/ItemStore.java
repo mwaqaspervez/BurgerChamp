@@ -138,6 +138,10 @@ public class ItemStore extends AppCompatActivity implements View.OnClickListener
         if (getSharedPreferences("basket", MODE_PRIVATE).getString("item", null) == null) {
             if (fb != null)
                 fb.setVisibility(View.GONE);
+
+        } else {
+            if (fb != null)
+                fb.setVisibility(View.VISIBLE);
         }
         super.onResume();
     }
