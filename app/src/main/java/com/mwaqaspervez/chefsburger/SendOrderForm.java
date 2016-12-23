@@ -1,4 +1,4 @@
-package com.mwaqaspervez.burgerchamp;
+package com.mwaqaspervez.chefsburger;
 
 import android.app.ProgressDialog;
 import android.content.Context;

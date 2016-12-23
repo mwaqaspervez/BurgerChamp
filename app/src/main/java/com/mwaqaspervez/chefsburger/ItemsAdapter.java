@@ -1,4 +1,4 @@
-package com.mwaqaspervez.burgerchamp;
+package com.mwaqaspervez.chefsburger;
 
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;

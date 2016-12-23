@@ -1,4 +1,4 @@
-package com.mwaqaspervez.burgerchamp;
+package com.mwaqaspervez.chefsburger;
 
 import org.junit.Test;
 

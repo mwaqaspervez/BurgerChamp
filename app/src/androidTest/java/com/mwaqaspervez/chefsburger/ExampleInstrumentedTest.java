@@ -1,4 +1,4 @@
-package com.mwaqaspervez.burgerchamp;
+package com.mwaqaspervez.chefsburger;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
