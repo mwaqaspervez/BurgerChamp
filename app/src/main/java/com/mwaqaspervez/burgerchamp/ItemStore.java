@@ -131,4 +131,14 @@ public class ItemStore extends AppCompatActivity implements View.OnClickListener
         super.onBackPressed();
         overridePendingTransition(R.anim.left_to_right, R.anim.right_to_left);
     }
+
+    @Override
+    protected void onResume() {
+
+        if (getSharedPreferences("basket", MODE_PRIVATE).getString("item", null) == null) {
+            if (fb != null)
+                fb.setVisibility(View.GONE);
+        }
+        super.onResume();
+    }
 }

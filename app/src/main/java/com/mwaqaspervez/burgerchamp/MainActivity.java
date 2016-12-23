@@ -8,13 +8,14 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private FloatingActionButton fb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        FloatingActionButton fb = (FloatingActionButton) findViewById(R.id.main_fab);
+        fb = (FloatingActionButton) findViewById(R.id.main_fab);
         fb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,4 +64,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_in_left);
     }
+
+    @Override
+    protected void onResume() {
+
+        if (getSharedPreferences("basket", MODE_PRIVATE).getString("item", null) == null) {
+            if (fb != null)
+                fb.setVisibility(View.GONE);
+        }
+        super.onResume();
+    }
+
 }
